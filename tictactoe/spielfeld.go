@@ -4,6 +4,7 @@ import (
 	"fmt"
 
 	b "github.com/wwi21ama-prog/boardgames/board"
+	h "github.com/wwi21ama-prog/boardgames/helpers"
 )
 
 func main() {
@@ -70,21 +71,11 @@ func move(board [][]string, char string) {
 func checkRows(board [][]string, char string) bool {
 	// Zeile 0 pruefen
 	for _, row := range board {
-		if allElementsEqualTo(row, char) {
+		if h.AllElementsEqualTo(row, char) {
 			return true // Early Out
 		}
 	}
 	return false
-}
-
-// Prüft eine Liste aus Strings, ob alle ihre Einträge gleich 's' sind.
-func allElementsEqualTo(row []string, s string) bool {
-	for _, element := range row {
-		if element != s {
-			return false
-		}
-	}
-	return true
 }
 
 // Nimmt das Board als Parameter und liefert true, wenn
@@ -92,7 +83,7 @@ func allElementsEqualTo(row []string, s string) bool {
 // Funktioniert erstmal nur für quadratische Spielfelder.
 func checkColumns(board [][]string, char string) bool {
 	for i, _ := range board {
-		if allElementsEqualTo(b.GetColumn(board, i), char) {
+		if h.AllElementsEqualTo(b.GetColumn(board, i), char) {
 			return true // Early Out
 		}
 	}
@@ -102,10 +93,10 @@ func checkColumns(board [][]string, char string) bool {
 // Nimmt das Board als Parameter und liefert true, wenn
 // es in einer Diagonale drei mal 'char' enthält.
 func checkDiagonals(board [][]string, char string) bool {
-	if allElementsEqualTo(b.GetDiagonal1(board), char) {
+	if h.AllElementsEqualTo(b.GetDiagonal1(board), char) {
 		return true
 	}
-	if allElementsEqualTo(b.GetDiagonal2(board), char) {
+	if h.AllElementsEqualTo(b.GetDiagonal2(board), char) {
 		return true
 	}
 
