@@ -82,7 +82,7 @@ func checkRows(board [][]string, char string) bool {
 // es in einer Spalte drei mal 'char' enthält.
 // Funktioniert erstmal nur für quadratische Spielfelder.
 func checkColumns(board [][]string, char string) bool {
-	for i, _ := range board {
+	for i := range board {
 		if h.AllElementsEqualTo(b.GetColumn(board, i), char) {
 			return true // Early Out
 		}
