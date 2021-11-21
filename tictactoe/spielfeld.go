@@ -8,6 +8,10 @@ import (
 )
 
 func main() {
+	runTicTacToe()
+}
+
+func runTicTacToe() {
 	spielfeld := b.MakeBoard(3, " ")
 
 	mainLoop(spielfeld)
