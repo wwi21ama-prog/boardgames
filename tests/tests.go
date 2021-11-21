@@ -15,7 +15,7 @@ func main() {
 		fmt.Println()
 	}
 	{
-		fmt.Println("Vollbesetztes TicTacToe-Board und einige von dessen Diagonalen ausgeben.")
+		fmt.Println("Vollbesetztes TicTacToe-Board und einige von dessen Zeilen, Spalten und Diagonalen ausgeben.")
 		board := b.MakeNumberedBoard(3)
 		b.PrintBoard(board)
 		fmt.Printf("Hauptdiagonale 1: %v\n", b.GetPrincipalDiagonal1(board))
@@ -24,6 +24,8 @@ func main() {
 		fmt.Printf("Diagonale nach rechts unten bei (2,0): %v\n", b.GetDiagonal1(board, 2, 0))
 		fmt.Printf("Diagonale nach links unten bei (0,1): %v\n", b.GetDiagonal2(board, 0, 1))
 		fmt.Printf("Diagonale nach links unten bei (0,2): %v\n", b.GetDiagonal2(board, 0, 2))
+		fmt.Printf("Zeile 2: %v\n", b.GetRow(board, 2))
+		fmt.Printf("Spalte 1: %v\n", b.GetColumn(board, 1))
 		fmt.Println()
 		fmt.Println()
 	}
