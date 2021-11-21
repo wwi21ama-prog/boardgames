@@ -2,6 +2,7 @@ package board
 
 import (
 	"fmt"
+	"math"
 
 	h "github.com/wwi21ama-prog/boardgames/helpers"
 )
@@ -62,9 +63,25 @@ func GetColumn(board [][]string, i int) []string {
 
 // Liefert die Hauptdiagonale von links oben nach rechts unten.
 func GetPrincipalDiagonal1(board [][]string) []string {
+	return GetDiagonal1(board, 0, 0)
+}
+
+// Liefert die Diagonale, die von links oben nach rechts unten durch die
+// angegebene Zeile und Spalte geht.
+func GetDiagonal1(board [][]string, row, col int) []string {
 	var result []string
-	for i := range board {
-		result = append(result, board[i][i])
+
+	// Minimum von row und col bestimmen
+	m := int(math.Min(float64(row), float64(col)))
+
+	// Wir berechnen nun mit r und c Versionen von row und col, die um das Minimum
+	// reduziert sind. Eines der beiden ist Null, d.h. wir laufen soweit wie möglich
+	// nach links oben. Die Position (r,c) sind die Zeile und Spalte des Elements
+	// ganz links oben in der Diagonale.
+	// Von hier aus läuft die Schleife nun maximal weit nach rechts unten.
+
+	for r, c := row-m, col-m; r < len(board) && c < len(board[0]); r, c = r+1, c+1 {
+		result = append(result, board[r][c])
 	}
 
 	return result
