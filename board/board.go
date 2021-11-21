@@ -51,7 +51,7 @@ func GetColumn(board [][]string, i int) []string {
 }
 
 // Liefert die Diagonale von links oben nach rechts unten.
-func GetDiagonal1(board [][]string) []string {
+func GetPrincipalDiagonal1(board [][]string) []string {
 	var result []string
 	for i, _ := range board {
 		result = append(result, board[i][i])
@@ -61,7 +61,7 @@ func GetDiagonal1(board [][]string) []string {
 }
 
 // Liefert die Diagonale von rechts oben nach links unten.
-func GetDiagonal2(board [][]string) []string {
+func GetPrincipalDiagonal2(board [][]string) []string {
 	var result []string
 	l := len(board) - 1
 	for i, _ := range board {
@@ -84,11 +84,11 @@ func ColumnEquals(board [][]string, i int, s string) bool {
 // Prüft, ob die Hauptdiagonale, die von links oben nach rechts unten läuft,
 // ausschließlich 's' enthält.
 func PrincipalDiag1Equals(board [][]string, s string) bool {
-	return h.AllElementsEqualTo(GetDiagonal1(board), s)
+	return h.AllElementsEqualTo(GetPrincipalDiagonal1(board), s)
 }
 
 // Prüft, ob die Hauptdiagonale, die von rechts oben nach links unten läuft,
 // ausschließlich 's' enthält.
 func PrincipalDiag2Equals(board [][]string, s string) bool {
-	return h.AllElementsEqualTo(GetDiagonal2(board), s)
+	return h.AllElementsEqualTo(GetPrincipalDiagonal2(board), s)
 }
