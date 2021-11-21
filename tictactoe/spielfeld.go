@@ -1,4 +1,4 @@
-package main
+package tictactoe
 
 import (
 	"fmt"
@@ -7,11 +7,7 @@ import (
 	h "github.com/wwi21ama-prog/boardgames/helpers"
 )
 
-func main() {
-	runTicTacToe()
-}
-
-func runTicTacToe() {
+func RunTicTacToe() {
 	spielfeld := b.MakeBoard(3, " ")
 
 	mainLoop(spielfeld)
