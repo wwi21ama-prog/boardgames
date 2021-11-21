@@ -1,3 +1,3 @@
-module github.com/wwi21ama/boardgames
+module github.com/wwi21ama-prog/boardgames
 
 go 1.17
