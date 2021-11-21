@@ -89,10 +89,24 @@ func GetDiagonal1(board [][]string, row, col int) []string {
 
 // Liefert die Hauptdiagonale von rechts oben nach links unten.
 func GetPrincipalDiagonal2(board [][]string) []string {
+	return GetDiagonal2(board, 0, len(board[0])-1)
+}
+
+// Liefert die Diagonale, die von rechts oben nach links unten durch die
+// angegebene Zeile und Spalte geht.
+func GetDiagonal2(board [][]string, row, col int) []string {
 	var result []string
-	l := len(board) - 1
-	for i := range board {
-		result = append(result, board[i][l-i])
+
+	// Ähnlicher Ansatz wie bei GetDiagonal1(), aber wir benutzen dieses mal nicht das
+	// Minimum, sondern wir setzen für den Start bedingungslos die Zeile auf 0.
+	// Die Schleife läuft durch alle Zeilen. Dabei kann es sein, dass die Spalte
+	// zu klein (negativ) oder zu groß (größer als die Länge) ist. Dies wird in der
+	// Schleife geprüft.
+
+	for r, c := 0, col+row; r < len(board); r, c = r+1, c-1 {
+		if c >= 0 && c < len(board[r]) {
+			result = append(result, board[r][c])
+		}
 	}
 
 	return result
