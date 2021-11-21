@@ -67,6 +67,11 @@ func printRow(row []string) {
 	fmt.Println()
 }
 
+// Liefert die i-te Zeile des Spielfelds als Liste.
+func GetRow(board [][]string, i int) []string {
+	return board[i]
+}
+
 // Liefert die i-te Spalte des Spielfelds als Liste.
 func GetColumn(board [][]string, i int) []string {
 	var result []string
@@ -129,7 +134,7 @@ func GetDiagonal2(board [][]string, row, col int) []string {
 
 // Prüft, ob die i-te Zeile des Boards ausschließlich 's' enthält.
 func RowEquals(board [][]string, i int, s string) bool {
-	return h.AllElementsEqualTo(board[i], s)
+	return h.AllElementsEqualTo(GetRow(board, i), s)
 }
 
 // Prüft, ob die i-te Spalte des Boards ausschließlich 's' enthält.
