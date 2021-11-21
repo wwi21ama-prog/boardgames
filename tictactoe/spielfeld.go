@@ -1,9 +1,13 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+
+	b "github.com/wwi21ama-prog/boardgames/board"
+)
 
 func main() {
-	spielfeld := makeBoard(3, " ")
+	spielfeld := b.MakeBoard(3, " ")
 
 	mainLoop(spielfeld)
 }
@@ -59,20 +63,6 @@ func move(board [][]string, char string) {
 		move(board, char)
 	}
 	board[row][col] = char
-}
-
-func makeBoard(size int, initChar string) [][]string {
-	// Definieren einer 2D-Slice
-	var board [][]string
-
-	for i := 0; i < size; i++ {
-		var row []string
-		for j := 0; j < size; j++ {
-			row = append(row, initChar)
-		}
-		board = append(board, row)
-	}
-	return board
 }
 
 // Das Spielfeld mit Trennlinien ausgeben.
