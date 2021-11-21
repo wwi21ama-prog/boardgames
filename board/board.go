@@ -20,12 +20,22 @@ func MakeBoard(size int, initChar string) [][]string {
 	return board
 }
 
+// Liefert eine Zeilen-Trennlinie für der Spielfeld mit der Länge length.
+func dividerLine(length int) string {
+	result := ""
+	for i := 0; i < length-1; i++ {
+		result += "---+"
+	}
+	result += "---"
+	return result
+}
+
 // Das Spielfeld mit Trennlinien ausgeben.
 func PrintBoard(board [][]string) {
 	for i, row := range board {
 		printRow(row)
 		if i < len(board)-1 {
-			fmt.Println("---+---+---")
+			fmt.Println(dividerLine(len(row)))
 		}
 	}
 }
