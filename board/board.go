@@ -7,6 +7,7 @@ import (
 	h "github.com/wwi21ama-prog/boardgames/helpers"
 )
 
+// Liefert ein quadratisches Spielfeld der angegebenen Größe.
 func MakeBoard(size int, initChar string) [][]string {
 	// Definieren einer 2D-Slice
 	var board [][]string
@@ -17,6 +18,20 @@ func MakeBoard(size int, initChar string) [][]string {
 			row = append(row, initChar)
 		}
 		board = append(board, row)
+	}
+	return board
+}
+
+// Liefert ein quadratisches Spielfeld mit durchnummerierten Feldern.
+// Ist zu Testzwecken nützlich und je nach Eingabemethode ggf. auch bei Spielen.
+func MakeNumberedBoard(size int) [][]string {
+	board := MakeBoard(size, " ")
+	counter := 0
+	for row := 0; row < len(board); row++ {
+		for col := 0; col < len(board[row]); col++ {
+			board[row][col] = fmt.Sprintf("%v", counter)
+			counter++
+		}
 	}
 	return board
 }

@@ -15,11 +15,8 @@ func main() {
 		fmt.Println()
 	}
 	{
-		fmt.Println("Hauptdiagonalen des TicTacToe-Felds besetzen, Spielfeld und Diagonalen ausgeben.")
-		board := b.MakeBoard(3, " ")
-		board[0][0] = "X"
-		board[1][1] = "X"
-		board[2][2] = "X"
+		fmt.Println("Vollbesetztes TicTacToe-Board und dessen Diagonalen ausgeben.")
+		board := b.MakeNumberedBoard(3)
 		b.PrintBoard(board)
 		fmt.Printf("Diagonale 1: %v\n", b.GetPrincipalDiagonal1(board))
 		fmt.Printf("Diagonale 2: %v\n", b.GetPrincipalDiagonal2(board))
