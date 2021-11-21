@@ -70,17 +70,17 @@ func move(board [][]string, char string) {
 func checkRows(board [][]string, char string) bool {
 	// Zeile 0 pruefen
 	for _, row := range board {
-		if checkList(row, char) {
+		if allElementsEqualTo(row, char) {
 			return true // Early Out
 		}
 	}
 	return false
 }
 
-// Prüft eine einzelne Zeile, ob sie drei mal 'char' enthält.
-func checkList(row []string, char string) bool {
+// Prüft eine Liste aus Strings, ob alle ihre Einträge gleich 's' sind.
+func allElementsEqualTo(row []string, s string) bool {
 	for _, element := range row {
-		if element != char {
+		if element != s {
 			return false
 		}
 	}
@@ -92,7 +92,7 @@ func checkList(row []string, char string) bool {
 // Funktioniert erstmal nur für quadratische Spielfelder.
 func checkColumns(board [][]string, char string) bool {
 	for i, _ := range board {
-		if checkList(b.GetColumn(board, i), char) {
+		if allElementsEqualTo(b.GetColumn(board, i), char) {
 			return true // Early Out
 		}
 	}
@@ -102,10 +102,10 @@ func checkColumns(board [][]string, char string) bool {
 // Nimmt das Board als Parameter und liefert true, wenn
 // es in einer Diagonale drei mal 'char' enthält.
 func checkDiagonals(board [][]string, char string) bool {
-	if checkList(b.GetDiagonal1(board), char) {
+	if allElementsEqualTo(b.GetDiagonal1(board), char) {
 		return true
 	}
-	if checkList(b.GetDiagonal2(board), char) {
+	if allElementsEqualTo(b.GetDiagonal2(board), char) {
 		return true
 	}
 
