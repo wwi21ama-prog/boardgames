@@ -50,7 +50,7 @@ func GetColumn(board [][]string, i int) []string {
 	return result
 }
 
-// Liefert die Diagonale von links oben nach rechts unten.
+// Liefert die Hauptdiagonale von links oben nach rechts unten.
 func GetPrincipalDiagonal1(board [][]string) []string {
 	var result []string
 	for i := range board {
@@ -60,7 +60,7 @@ func GetPrincipalDiagonal1(board [][]string) []string {
 	return result
 }
 
-// Liefert die Diagonale von rechts oben nach links unten.
+// Liefert die Hauptdiagonale von rechts oben nach links unten.
 func GetPrincipalDiagonal2(board [][]string) []string {
 	var result []string
 	l := len(board) - 1
