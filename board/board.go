@@ -153,3 +153,15 @@ func PrincipalDiag1Equals(board [][]string, s string) bool {
 func PrincipalDiag2Equals(board [][]string, s string) bool {
 	return h.AllElementsEqualTo(GetPrincipalDiagonal2(board), s)
 }
+
+// Prüft, ob die Diagonale, die von links oben nach rechts unten durch die angegebene
+// Position läuft, ausschließlich 's' enthält.
+func Diag1Equals(board [][]string, row, col int, s string) bool {
+	return h.AllElementsEqualTo(GetDiagonal1(board, row, col), s)
+}
+
+// Prüft, ob die Diagonale, die von rechts oben nach links unten durch die angegebene
+// Position läuft, ausschließlich 's' enthält.
+func Diag2Equals(board [][]string, row, col int, s string) bool {
+	return h.AllElementsEqualTo(GetDiagonal2(board, row, col), s)
+}
