@@ -1,6 +1,10 @@
 package board
 
-import "fmt"
+import (
+	"fmt"
+
+	h "github.com/wwi21ama-prog/boardgames/helpers"
+)
 
 func MakeBoard(size int, initChar string) [][]string {
 	// Definieren einer 2D-Slice
@@ -65,4 +69,26 @@ func GetDiagonal2(board [][]string) []string {
 	}
 
 	return result
+}
+
+// Prüft, ob die i-te Zeile des Boards ausschließlich 's' enthält.
+func RowEquals(board [][]string, i int, s string) bool {
+	return h.AllElementsEqualTo(board[i], s)
+}
+
+// Prüft, ob die i-te Spalte des Boards ausschließlich 's' enthält.
+func ColumnEquals(board [][]string, i int, s string) bool {
+	return h.AllElementsEqualTo(GetColumn(board, i), s)
+}
+
+// Prüft, ob die Hauptdiagonale, die von links oben nach rechts unten läuft,
+// ausschließlich 's' enthält.
+func PrincipalDiag1Equals(board [][]string, s string) bool {
+	return h.AllElementsEqualTo(GetDiagonal1(board), s)
+}
+
+// Prüft, ob die Hauptdiagonale, die von rechts oben nach links unten läuft,
+// ausschließlich 's' enthält.
+func PrincipalDiag2Equals(board [][]string, s string) bool {
+	return h.AllElementsEqualTo(GetDiagonal2(board), s)
 }

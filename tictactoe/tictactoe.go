@@ -4,7 +4,6 @@ import (
 	"fmt"
 
 	b "github.com/wwi21ama-prog/boardgames/board"
-	h "github.com/wwi21ama-prog/boardgames/helpers"
 )
 
 func RunTicTacToe() {
@@ -70,8 +69,8 @@ func move(board [][]string, char string) {
 // es in einer Zeile drei mal 'char' enthält.
 func checkRows(board [][]string, char string) bool {
 	// Zeile 0 pruefen
-	for _, row := range board {
-		if h.AllElementsEqualTo(row, char) {
+	for i := range board {
+		if b.RowEquals(board, i, char) {
 			return true // Early Out
 		}
 	}
@@ -83,7 +82,7 @@ func checkRows(board [][]string, char string) bool {
 // Funktioniert erstmal nur für quadratische Spielfelder.
 func checkColumns(board [][]string, char string) bool {
 	for i := range board {
-		if h.AllElementsEqualTo(b.GetColumn(board, i), char) {
+		if b.ColumnEquals(board, i, char) {
 			return true // Early Out
 		}
 	}
@@ -93,14 +92,8 @@ func checkColumns(board [][]string, char string) bool {
 // Nimmt das Board als Parameter und liefert true, wenn
 // es in einer Diagonale drei mal 'char' enthält.
 func checkDiagonals(board [][]string, char string) bool {
-	if h.AllElementsEqualTo(b.GetDiagonal1(board), char) {
-		return true
-	}
-	if h.AllElementsEqualTo(b.GetDiagonal2(board), char) {
-		return true
-	}
-
-	return false
+	return b.PrincipalDiag1Equals(board, char) ||
+		b.PrincipalDiag2Equals(board, char)
 }
 
 // Prüft, ob der Spieler mit dem Zeichen 'char' gewonnen hat.
